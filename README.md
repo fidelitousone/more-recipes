@@ -1,7 +1,7 @@
 # project1-js843
 A simple web app to retrieve recipes and quotes relating to them on Twitter.
 
-##Table of Contents
+## Table of Contents
 * Technologies (#technologies)
 * Setup (#setup)
 
