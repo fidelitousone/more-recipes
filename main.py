@@ -3,20 +3,9 @@ import random
 import flask
 import os
 
-def get_secrets():
-    secret_api_information = []
-    try:
-        with open(".env") as f:
-            for line in f:
-                secret_api_information.append(line.strip())
-        return secret_api_information
-    except FileNotFoundError:
-        print(".env config file wasn't found!")
-        exit(1)
-
 
 def get_food_quote(twitter_api, food_query):
-    twitter_query = api.search("chocolate cake", count=100)
+    twitter_query = api.search(food_query, count=100)
 
     random_tweet = twitter_query[random.randint(0,100)]
 
@@ -27,11 +16,14 @@ def get_food_quote(twitter_api, food_query):
         return (t.full_text, f"@{t.author._json['screen_name']}", t.created_at)
 
 
-api_information = get_secrets()
+api_key = os.environ['CONSUMER_API_KEY']
+secret_key = os.environ['CONSUMER_SECRET_KEY']
+app_secret_key = os.environ['APP_SECRET']
+app_key = os.environ['APP_KEY']
 
 try:
-    auth = tweepy.OAuthHandler(api_information[0], api_information[1])
-    auth.set_access_token(api_information[2], api_information[3])
+    auth = tweepy.OAuthHandler(api_key, secret_key)
+    auth.set_access_token(app_secret_key, app_key)
 except tweepy.TweepError:
     print("Tweepy Error, check API keys!")
     exit(1)
