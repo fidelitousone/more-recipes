@@ -1,8 +1,9 @@
 <html>
     <head />
-    <link rel="stylesheet" href=[{ url_for('static', filenmame='style.css'})] />
+    <link rel="stylesheet" href={{ url_for('static', filename='style.css') }} />
+    </head>
     <body>
-    <img src="https://pics.onsizzle.com/are-ya-winning-son-1005522.png" />
     <h1>Food Quote about: {{queried_food}}</h1>
     <p>{{content}} {{author}} {{at}}</p>
+    </body>
 </html>
