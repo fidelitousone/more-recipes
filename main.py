@@ -1,6 +1,7 @@
 import tweepy
-import json
-import random    
+import random
+import flask
+import os
 
 def get_secrets():
     secret_api_information = []
@@ -36,3 +37,24 @@ except tweepy.TweepError:
     exit(1)
 
 api = tweepy.API(auth)
+
+app = flask.Flask(__name__)
+
+@app.route("/")
+def index():
+    queried_food = "chocolate cake"
+    quote = get_food_quote(api, queried_food)
+    return flask.render_template(
+        "index.html",
+        content = quote[0],
+        author = quote[1],
+        at = quote[2],
+        queried_food=queried_food
+    )
+
+if (__name__ == "__main__"):
+    app.run (
+        debug=True,
+        port=int(os.getenv('PORT', 8080)),
+        host=os.getenv('IP', '0.0.0.0')
+    )
