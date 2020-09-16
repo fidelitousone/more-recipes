@@ -2,13 +2,6 @@
 
 echo "Setting up Python environment..."
 
-
-#python3 -m venv .venv
-
-#pip install tweepy flask
-
-source ".venv/bin/activate"
-
 if [ -f ".env" ]
 then
     echo ".env present."
@@ -20,11 +13,9 @@ else
     echo "API Key: "
     read api_key
     echo "API Secret: "
-    read consumer_secret
-    printf "export CONSUMER_API_KEY=\'$consumer_key\'\nexport CONSUMER_SECRET_KEY=\'$consumer_secret\'\nexport APP_SECRET=\'$api_key\'\nexport APP_KEY=\'$consumer_secret\'\n" > .env
+    read api_secret
+    printf "export CONSUMER_API_KEY=\'$consumer_key\'\nexport CONSUMER_SECRET_KEY=\'$consumer_secret\'\nexport APP_SECRET=\'$api_key\'\nexport APP_KEY=\'$api_secret\'\n" > .env
     echo "Don't forget to source .env!"
 fi
-
-
 
 echo "Done!"
