@@ -10,12 +10,11 @@ else
     read consumer_key
     echo "Consumer Secret: "
     read consumer_secret
-    echo "API Key: "
+    echo "OAuth Token: "
     read api_key
-    echo "API Secret: "
+    echo "OAuth Token Secret: "
     read api_secret
     printf "export CONSUMER_API_KEY=\'$consumer_key\'\nexport CONSUMER_SECRET_KEY=\'$consumer_secret\'\nexport APP_SECRET=\'$api_key\'\nexport APP_KEY=\'$api_secret\'\n" > .env
-    echo "Don't forget to source .env!"
 fi
 
 echo "Done!"
