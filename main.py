@@ -20,8 +20,12 @@ def get_food_quote(twitter_api, food_query):
     
     """
     twitter_query = twitter_api.search(food_query, count=100)
+    
+    if (len(twitter_query) == 0):
+        return ("", "", "", "")
 
-    random_tweet = twitter_query[random.randint(0,100)]
+    rand_int = random.randint(0,len(twitter_query))
+    random_tweet = twitter_query[rand_int]
 
     t = twitter_api.get_status(random_tweet.id, tweet_mode="extended")
     try:
