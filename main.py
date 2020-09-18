@@ -2,6 +2,7 @@ import tweepy
 import random
 import flask
 import os
+from dotenv import load_dotenv
 
 
 def get_food_quote(twitter_api, food_query):
@@ -18,11 +19,11 @@ def get_food_quote(twitter_api, food_query):
     tuple: Tweet text, twitter handle, exact time posted
     
     """
-    twitter_query = api.search(food_query, count=100)
+    twitter_query = twitter_api.search(food_query, count=100)
 
     random_tweet = twitter_query[random.randint(0,100)]
 
-    t = api.get_status(random_tweet.id, tweet_mode="extended")
+    t = twitter_api.get_status(random_tweet.id, tweet_mode="extended")
     try:
         return (
             t.retweeted_status.full_text, 
@@ -36,6 +37,8 @@ def get_food_quote(twitter_api, food_query):
             t.created_at
         )
 
+
+load_dotenv()
 
 api_key = os.environ['CONSUMER_API_KEY']
 secret_key = os.environ['CONSUMER_SECRET_KEY']
