@@ -21,11 +21,10 @@ def get_food_quote(twitter_api, food_query):
     """
     twitter_query = twitter_api.search(food_query, count=100)
     
-    if (len(twitter_query) == 0):
+    try:
+        random_tweet = random.choice(twitter_query)
+    except IndexError:
         return ("", "", "", "")
-
-    rand_int = random.randint(0,len(twitter_query))
-    random_tweet = twitter_query[rand_int]
 
     t = twitter_api.get_status(random_tweet.id, tweet_mode="extended")
     try:
@@ -62,7 +61,16 @@ app = flask.Flask(__name__)
 
 @app.route("/")
 def index():
-    queried_food = "chocolate cake"
+    random_foods = [
+        "ras malai",
+        "jian bing",
+        "chocolate cake",
+        "aloo paratha",
+        "vanilla ice cream",
+        "tonkatsu",
+        "rarebit"
+        ]
+    queried_food = random.choice(random_foods)
     quote = get_food_quote(api, queried_food)
     return flask.render_template(
         "index.html",
