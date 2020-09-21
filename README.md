@@ -4,18 +4,19 @@ A simple web app to retrieve recipes and quotes relating to them on Twitter.
 ## Table of Contents
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [Technical Difficulties](#technical_difficulties)
+* [Technical Difficulties](#technical-difficulties)
+* [Known Issues](#known-issues)
 
 ## Technologies
 * Python 3.6.12+
 * pip 18.1+
 * tweepy 3.9.0+
 * Flask 1.1.2+
-* python-dotenv 0.14.0
+* python-dotenv 0.14.0+
 
 ## Setup
 - Clone the repo: <code>git clone https://github.com/fidelitousone/project1-js843.git</code>
-- <code>cd</code> into app directory
+`cd` into app directory
 - Install dependencies: <code>pip install flask tweepy python-dotenv</code>
 - run `./install.sh`
 - Enter corresponding keys
@@ -43,3 +44,13 @@ to no search results from the query. My second implementation was to just
 get the length of the search object and handle a returned empty list.
 Finally the last implementation was just to use random.choice() which
 essentially avoids one-off errors altogether.
+
+## Known Issues
+### Tweet Relevancy
+Not every tweet obtained is actually relevant to the actual food. Instead it
+might be a retweet to someone talking about that food, lambasting that 
+particular food or may just be completely irrelevant altogether because 
+its just in their twitter handle. A solution, given more time, would be to 
+generate a list of extremely specific search terms about the tweet. Additionally,
+another approach would be to implement some kind of machine learning to get
+a desired tweet.
