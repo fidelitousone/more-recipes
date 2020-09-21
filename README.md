@@ -16,7 +16,7 @@ A simple web app to retrieve recipes and quotes relating to them on Twitter.
 
 ## Setup
 - Clone the repo: <code>git clone https://github.com/fidelitousone/project1-js843.git</code>
-`cd` into app directory
+-`cd` into app directory
 - Install dependencies: <code>pip install flask tweepy python-dotenv</code>
 - run `./install.sh`
 - Enter corresponding keys
