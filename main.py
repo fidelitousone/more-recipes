@@ -30,13 +30,13 @@ def get_food_quote(twitter_api, food_query):
     try:
         return (
             t.retweeted_status.full_text, 
-            f"@{t.retweeted_status.author._json['screen_name']}", 
+            f"{t.retweeted_status.author._json['screen_name']}", 
             t.retweeted_status.created_at
         )
     except AttributeError:
         return (
             t.full_text, 
-            f"@{t.author._json['screen_name']}", 
+            f"{t.author._json['screen_name']}", 
             t.created_at
         )
 

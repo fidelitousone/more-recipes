@@ -1,9 +1,10 @@
 <html>
     <head />
     <link rel="stylesheet" href={{ url_for('static', filename='style.css') }} />
+    <title>{{queried_food}}</title>
     </head>
     <body>
-    <h1>Food Quote about: {{queried_food}}</h1>
-    <div id="container">{{content}} {{author}} {{at}}</div>
+    <div id="container2">Food: {{queried_food}}</div>
+    <div id="container">{{content}} <a href="https://twitter.com/{{author}}"><i>@{{author}}</i></a> {{at}}</div>
     </body>
 </html>

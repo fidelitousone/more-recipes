@@ -2,6 +2,12 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+h1 {
+    margin: auto;
+    max-width: 500px;
+    padding: 5px;
+}
+
 #container {
     background-color:#FFE4E1;
     max-width: 500px;
@@ -9,3 +15,14 @@ body {
     padding: 15px;
     border-radius: 10px;
 }
+
+#container2 {
+    font-weight: bold;
+    max-width: 500px;
+    margin: auto;
+    padding: 5px;
+}
+
+a {
+    text-decoration:none;
+} 
