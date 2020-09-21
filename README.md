@@ -15,8 +15,8 @@ A simple web app to retrieve recipes and quotes relating to them on Twitter.
 * python-dotenv 0.14.0+
 
 ## Setup
-- Clone the repo: <code>git clone https://github.com/fidelitousone/project1-js843.git</code>
--`cd` into app directory
+- Clone the repo: `git clone https://github.com/fidelitousone/project1-js843.git`
+- `cd` into app directory
 - Install dependencies: <code>pip install flask tweepy python-dotenv</code>
 - run `./install.sh`
 - Enter corresponding keys
