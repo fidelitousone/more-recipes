@@ -3,42 +3,8 @@ import random
 import flask
 import os
 from dotenv import load_dotenv
-import requests
-import json
+from spoonacular_utils import *
 
-
-def search_recipe(spoonacular_api, query):
-    payload = {
-        "apiKey": spoonacular_api,
-        "query": query,
-        "number": 1
-    }
-    url = "https://api.spoonacular.com/recipes/complexSearch"
-    search_result = requests.get(url, params=payload)
-    search_result_json = search_result.json()
-    
-    try:
-        return search_result_json["results"][0]["id"]
-    except IndexError:
-        return None
-    
-    
-def food_information(spoonacular_api, query):
-    payload = {
-        "apiKey": spoonacular_api,
-        "includeNutrition": "false"
-    }
-    recipe_id = search_recipe(spoonacular_api, query)
-    if recipe_id is None:
-        return f"Spoonacular couldn't find {query}"
-    url = f"https://api.spoonacular.com/recipes/{recipe_id}/information"
-    spoonacular_food_data = requests.get(url, params=payload)
-    food_data_json = spoonacular_food_data.json()
-    
-    return (
-        food_data_json["title"]
-    )
-    
 
 def get_food_quote(twitter_api, food_query):
     """
@@ -92,6 +58,19 @@ except tweepy.TweepError:
     exit(1)
 
 
+#TODO Remove this from code
+# This test worked and showed that
+# return from parsing the json actually got
+# the name, servings, image, and prep time in minutes
+
+
+#spoonacular_json = food_information(spoonacular_api_key, "chocolate cake")
+#return the list
+#info_tuple = parse_food_information(spoonacular_json)
+
+#for tuple_item in info_tuple:
+#    print(tuple_item)
+
 api = tweepy.API(auth)
 app = flask.Flask(__name__)
 
@@ -108,13 +87,12 @@ def index():
         ]
     queried_food = random.choice(random_foods)
     quote = get_food_quote(api, queried_food)
-    spoon = food_information(spoonacular_api_key, queried_food)
     return flask.render_template(
         "index.html",
         content = quote[0],
         author = quote[1],
         at = quote[2],
-        queried_food=spoon
+        queried_food=queried_food
     )
 
 if (__name__ == "__main__"):
