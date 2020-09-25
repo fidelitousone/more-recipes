@@ -14,7 +14,9 @@ else
     read api_key
     echo "OAuth Token Secret: "
     read api_secret
-    printf "export CONSUMER_API_KEY=\'$consumer_key\'\nexport CONSUMER_SECRET_KEY=\'$consumer_secret\'\nexport APP_SECRET=\'$api_key\'\nexport APP_KEY=\'$api_secret\'\n" > .env
+    echo "Spoonacular API key: "
+    read spoonacular_api_key
+    printf "export CONSUMER_API_KEY=\'$consumer_key\'\nexport CONSUMER_SECRET_KEY=\'$consumer_secret\'\nexport APP_SECRET=\'$api_key\'\nexport APP_KEY=\'$api_secret\'\nexport SPOONACULAR_API_KEY=\'$spoonacular_api_key\'\n" > .env
 fi
 
 echo "Done!"

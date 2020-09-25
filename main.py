@@ -3,7 +3,42 @@ import random
 import flask
 import os
 from dotenv import load_dotenv
+import requests
+import json
 
+
+def search_recipe(spoonacular_api, query):
+    payload = {
+        "apiKey": spoonacular_api,
+        "query": query,
+        "number": 1
+    }
+    url = "https://api.spoonacular.com/recipes/complexSearch"
+    search_result = requests.get(url, params=payload)
+    search_result_json = search_result.json()
+    
+    try:
+        return search_result_json["results"][0]["id"]
+    except IndexError:
+        return None
+    
+    
+def food_information(spoonacular_api, query):
+    payload = {
+        "apiKey": spoonacular_api,
+        "includeNutrition": "false"
+    }
+    recipe_id = search_recipe(spoonacular_api, query)
+    if recipe_id is None:
+        return f"Spoonacular couldn't find {query}"
+    url = f"https://api.spoonacular.com/recipes/{recipe_id}/information"
+    spoonacular_food_data = requests.get(url, params=payload)
+    food_data_json = spoonacular_food_data.json()
+    
+    return (
+        food_data_json["title"]
+    )
+    
 
 def get_food_quote(twitter_api, food_query):
     """
@@ -47,6 +82,7 @@ api_key = os.environ['CONSUMER_API_KEY']
 secret_key = os.environ['CONSUMER_SECRET_KEY']
 app_secret_key = os.environ['APP_SECRET']
 app_key = os.environ['APP_KEY']
+spoonacular_api_key = os.environ['SPOONACULAR_API_KEY']
 
 try:
     auth = tweepy.OAuthHandler(api_key, secret_key)
@@ -72,12 +108,13 @@ def index():
         ]
     queried_food = random.choice(random_foods)
     quote = get_food_quote(api, queried_food)
+    spoon = food_information(spoonacular_api_key, queried_food)
     return flask.render_template(
         "index.html",
         content = quote[0],
         author = quote[1],
         at = quote[2],
-        queried_food=queried_food
+        queried_food=spoon
     )
 
 if (__name__ == "__main__"):
