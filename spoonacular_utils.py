@@ -3,6 +3,19 @@ import json
 
 
 def search_recipe(spoonacular_api, query):
+    """
+    Request a search from spoonacular's API regarding a recipe
+    
+    
+    Parameters:
+    spoonacular_api (string): Spoonacular API Key
+    query (string): Search terms for recipe
+    
+    Returns:
+    string: recipe id
+    None: if no results were found based on query
+    
+    """
     payload = {
         "apiKey": spoonacular_api,
         "query": query,
@@ -19,6 +32,19 @@ def search_recipe(spoonacular_api, query):
 
 
 def food_information(spoonacular_api, query):
+    """
+    Request recipe information from Spoonacular's API
+    
+    
+    Parameters:
+    spoonacular_api (string): Spoonacular API Key
+    query (string): Search terms for recipe
+    
+    Returns:
+    json: json with recipe information
+    None: If recipe search query gets no results
+    
+    """
     payload = {
         "apiKey": spoonacular_api,
         "includeNutrition": "false"
@@ -34,6 +60,16 @@ def food_information(spoonacular_api, query):
     
 
 def parse_food_information(food_json):
+    """
+    Parses relevant json information from spoonacular json
+    
+    
+    Parameters:
+    food_json (json): Spoonacular json data
+    
+    Returns:
+    tuple: with indices to title, servinmgs, image, and prep time.
+    """
         
     return (
         food_json["title"],
