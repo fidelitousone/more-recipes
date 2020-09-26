@@ -70,15 +70,21 @@ def parse_food_information(food_json):
     tuple: with indices to title, servinmgs, image, and prep time.
     """
     try:
-        json.loads(food_json)
+        data = json.loads(food_json)
     except ValueError:
-        return ("No Recipe Data Found for this food :(", "", "", "") 
+        return ("No Recipe Data Found for this food :(", "", "", "")
         
+    ingredients_list = []
+    
+    for item in data["extendedIngredients"]:
+        ingredients_list.append(item["name"])
+    
     return (
-        food_json["title"],
-        food_json["servings"],
-        food_json["image"],
+        data["title"],
+        data["servings"],
+        data["image"],
         #prep time
-        food_json["readyInMinutes"]
+        data["readyInMinutes"],
+        ingredients_list
     )
     
