@@ -24,7 +24,7 @@ def search_recipe(spoonacular_api, query):
     url = "https://api.spoonacular.com/recipes/complexSearch"
     search_result = requests.get(url, params=payload)
     search_result_json = search_result.json()
-    
+
     try:
         return search_result_json["results"][0]["id"]
     except IndexError:
