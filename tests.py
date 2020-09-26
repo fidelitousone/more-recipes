@@ -19,6 +19,10 @@ class TestSpoonacularMethods(unittest.TestCase):
         result = search_recipe(mock_check, "Chocolate Cake")
         self.assertIsNone(result)
     
+    # Mangled or bad data given to parse
+    def test_bad_data_handle_parsefood(self):
+        result = parse_food_information("m;cvm;lal")
+        self.assertIs(type(result), tuple)
     
 if __name__ == '__main__':
     unittest.main()
