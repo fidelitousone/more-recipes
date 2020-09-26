@@ -8,6 +8,57 @@ h1 {
     padding: 5px;
 }
 
+.app-container {
+    padding-top: 10px
+}
+
+.recipe-container {
+    background-color: aliceblue;
+    height: 70%;
+    width: 60%;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.recipe-title {
+    text-align: center;
+    padding-top: 10px;
+    
+}
+
+.recipe-content {
+    
+}
+
+.recipe-image {
+    float: left;
+}
+
+.recipe-information {
+    text-align: center;
+    float: right;
+    width: 50%;
+}
+
+.tweet-wrapper {
+    margin: auto;
+    width: 60%;
+    background-color: bisque;
+    border-radius: 10px;
+    height: 10%;
+    text-align: center;
+    margin-top: 15px;
+    padding: 1px;
+    
+}
+
+img {
+    width: 50%;
+    height: auto;
+    padding-top: 5%;
+    padding-left: 1.5%;
+}
+
 #container {
     background-color:#FFE4E1;
     max-width: 500px;
@@ -21,6 +72,11 @@ h1 {
     max-width: 500px;
     margin: auto;
     padding: 5px;
+}
+
+#recipe_info {
+    background-color:#FFE4E1;
+    padding: 15px;
 }
 
 a {

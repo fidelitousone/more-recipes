@@ -4,7 +4,24 @@
     <title>{{queried_food}}</title>
     </head>
     <body>
-    <div id="container2">Food: {{queried_food}}</div>
-    <div id="container">{{content}} <a href="https://twitter.com/{{author}}"><i>@{{author}}</i></a> {{at}}</div>
+    <div class="app-container">
+        <div class="recipe-container">
+            <div class="recipe-title">
+                Food: {{queried_food}}
+            </div>
+            <div class="recipe-content">
+                <div class="recipe-image">
+                     <img src="http://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder-800x423.gif" alt="alternatetext"> 
+                </div>
+                <div class="recipe-information">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ornare molestie ipsum et rhoncus. Duis bibendum dolor nibh, elementum laoreet ipsum elementum eu. Aliquam pharetra ligula ac tortor volutpat vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla leo tellus, interdum et felis vitae, venenatis commodo lorem. Nunc posuere felis at libero laoreet, porttitor rutrum nisi egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam viverra ornare leo, eu tristique mi mattis at. Nulla non turpis sit amet augue sollicitudin pretium quis ac eros. Maecenas finibus, justo a placerat interdum, mauris quam dignissim diam, sit amet pulvinar mi metus quis sem. Pellentesque luctus erat id semper bibendum. Curabitur eget pulvinar turpis, ac tempus ex. </p>
+                    <p>Morbi eu tincidunt sapien. Sed erat ex, tempus sed nibh ac, dignissim porta risus. Phasellus vitae ante elit. Nullam fermentum nisi ut diam dapibus, nec malesuada leo interdum. Ut quis justo cursus augue aliquet porta id eget mauris. Nunc vitae interdum dolor. Nunc vitae dui malesuada, egestas velit vel, malesuada purus. Mauris euismod quis lorem eget varius. Quisque mattis quam at massa egestas scelerisque. Cras vel laoreet lectus, vel rutrum nulla. </p>
+                </div>
+            </div>
+        </div>
+        <div class="tweet-wrapper">
+            <p>{{content}} <a href="https://twitter.com/{{author}}"><i>@{{author}}</i></a> {{at}}</p>
+        </div>
+    </div>
     </body>
 </html>
