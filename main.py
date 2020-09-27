@@ -88,7 +88,8 @@ def index():
         recipe_image=food_info[2],
         prep_time=food_info[3],
         ingredients_length=len(food_info[4]),
-        ingredients=food_info[4]
+        ingredients=food_info[4],
+        source_link=food_info[5]
         
     )
 

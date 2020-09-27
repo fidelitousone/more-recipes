@@ -93,6 +93,7 @@ def parse_food_information(food_json):
         data["image"],
         #prep time
         data["readyInMinutes"],
-        ingredients_list
+        ingredients_list,
+        data["sourceUrl"]
     )
     

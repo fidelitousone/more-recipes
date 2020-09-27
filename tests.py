@@ -498,6 +498,10 @@ class TestSpoonacularMethods(unittest.TestCase):
     def test_check_recipe_ingredients(self):
       result = parse_food_information(self.response_spoon)
       self.assertCountEqual(result[4], self.correct_ingredients)
+      
+    def test_check_recipe_url(self):
+      result = parse_food_information(self.response_spoon)
+      self.assertAlmostEqual(result[5], "https://www.foodista.com/recipe/ZP3JT33Z/true-vanilla-ice-cream")
     
 if __name__ == '__main__':
     unittest.main()

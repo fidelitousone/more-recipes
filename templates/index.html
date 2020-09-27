@@ -9,6 +9,9 @@
             <div class="recipe-title">
                 <h1>{{queried_food}}</h1>
             </div>
+            <div class="recipe-link">
+                {{source_link}}
+            </div>
             <div class="recipe-content">
                 <div class="recipe-image">
                      <img src="{{recipe_image}}" alt="alternatetext"> 
@@ -16,6 +19,8 @@
                 <div class="recipe-information">
                     <p>Ready in: {{prep_time}} Minutes</p>
                     <p>Servings: {{servings}}</p>
+                </div>
+                <div class="recipe-ingredients-list">
                     {%for i in range(0, ingredients_length)%}
                         <li>{{ingredients[i]}}</li>
                     {%endfor%}

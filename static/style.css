@@ -26,8 +26,18 @@ h1 {
     
 }
 
+.recipe-link {
+    padding-top: 33%;
+    text-align: center;
+    
+}
+
 .recipe-content {
     
+}
+
+.recipe-ingredients-list {
+    font-size: 20px;
 }
 
 .recipe-image {
@@ -35,7 +45,6 @@ h1 {
     width: 50%;
     height: auto;
     margin: auto;
-    padding-top: 15%;
 }
 
 .recipe-information {
@@ -58,10 +67,9 @@ h1 {
 }
 
 img {
-    width: 50%;
+    width: 90%;
     height: auto;
-    padding-top: 5%;
-    padding-left: 5%;
+    padding-top: 20%;
     display: block;
     margin-left: auto;
     margin-right: auto;
