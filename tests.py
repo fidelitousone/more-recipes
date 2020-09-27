@@ -457,7 +457,7 @@ class TestSpoonacularMethods(unittest.TestCase):
     
     food_json = json.dumps(response_spoon)
     tester = str(response_spoon)
-    correct_ingredients = ["heavy cream","whole milk","sugar","kosher salt","vanilla extract","egg yolks"]
+    correct_ingredients = ["1 1/2 cups heavy cream","1 cup whole milk","1/2 cup sugar","Pinch of kosher salt", "1 vanilla bean or 1 teaspoon vanilla extract", "5 egg yolks"]
     
     @mock.patch("requests.Response.json", return_value=fake_json_good)
     def test_good_search(self, mock_check):
@@ -493,7 +493,7 @@ class TestSpoonacularMethods(unittest.TestCase):
         
     def test_get_recipe_ingredients(self):
         result = parse_food_information(self.response_spoon)
-        self.assertEqual(result[4][0], "heavy cream")
+        self.assertEqual(result[4][0], "1 1/2 cups heavy cream")
     
     def test_check_recipe_ingredients(self):
       result = parse_food_information(self.response_spoon)
