@@ -77,6 +77,7 @@ def index():
     food_info_json = food_information(spoonacular_api_key, recipe_id)
     food_info = parse_food_information(food_info_json)
     
+    
     quote = get_food_quote(api, queried_food)
     return flask.render_template(
         "index.html",

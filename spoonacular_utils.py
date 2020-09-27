@@ -1,6 +1,6 @@
 import requests
 import json
-
+import random
 
 def search_recipe(spoonacular_api, query):
     """
@@ -18,15 +18,16 @@ def search_recipe(spoonacular_api, query):
     """
     payload = {
         "apiKey": spoonacular_api,
-        "query": query,
-        "number": 1
+        "query": query
     }
     url = "https://api.spoonacular.com/recipes/complexSearch"
     search_result = requests.get(url, params=payload)
     search_result_json = search_result.json()
-
+    
+            
     try:
-        return search_result_json["results"][0]["id"]
+        resultant = random.choice(search_result_json["results"])
+        return resultant["id"]
     except IndexError:
         return None
 
@@ -79,6 +80,7 @@ def parse_food_information(food_json):
     except ValueError:
         return ("No Recipe Data Found for this food :(", "", "", "")
         
+        
     ingredients_list = []
     
     if "extendedIngredients" not in data:
@@ -86,6 +88,7 @@ def parse_food_information(food_json):
     
     for item in data["extendedIngredients"]:
         ingredients_list.append(item["originalString"])
+    
     
     return (
         data["title"],
