@@ -57,20 +57,6 @@ except tweepy.TweepError:
     print("Tweepy Error, check API keys!")
     exit(1)
 
-
-#TODO Remove this from code
-# This test worked and showed that
-# return from parsing the json actually got
-# the name, servings, image, and prep time in minutes
-
-
-#spoonacular_json = food_information(spoonacular_api_key, "chocolate cake")
-#return the list
-#info_tuple = parse_food_information(spoonacular_json)
-
-#for tuple_item in info_tuple:
-#    print(tuple_item)
-
 api = tweepy.API(auth)
 app = flask.Flask(__name__)
 
@@ -87,14 +73,9 @@ def index():
         ]
     queried_food = random.choice(random_foods)
     
-    print("queried_food " + queried_food)
-    
-    #Deactivated so I don't waste points
     recipe_id = search_recipe(spoonacular_api_key, queried_food)
     food_info_json = food_information(spoonacular_api_key, recipe_id)
     food_info = parse_food_information(food_info_json)
-    
-    print(food_info)
     
     quote = get_food_quote(api, queried_food)
     return flask.render_template(
@@ -105,7 +86,9 @@ def index():
         queried_food=food_info[0],
         servings=food_info[1],
         recipe_image=food_info[2],
-        prep_time=food_info[3]
+        prep_time=food_info[3],
+        ingredients_length=len(food_info[4]),
+        ingredients=food_info[4]
         
     )
 

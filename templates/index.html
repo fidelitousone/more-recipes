@@ -16,7 +16,9 @@
                 <div class="recipe-information">
                     <p>Ready in: {{prep_time}} Minutes</p>
                     <p>Servings: {{servings}}</p>
-                    <p></p>
+                    {%for i in range(0, ingredients_length)%}
+                        <li>{{ingredients[i]}}</li>
+                    {%endfor%}
                 </div>
             </div>
         </div>
