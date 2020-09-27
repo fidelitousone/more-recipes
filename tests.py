@@ -457,6 +457,7 @@ class TestSpoonacularMethods(unittest.TestCase):
     
     food_json = json.dumps(response_spoon)
     tester = str(response_spoon)
+    correct_ingredients = ["heavy cream","whole milk","sugar","kosher salt","vanilla extract","egg yolks"]
     
     @mock.patch("requests.Response.json", return_value=fake_json_good)
     def test_good_search(self, mock_check):
@@ -473,15 +474,6 @@ class TestSpoonacularMethods(unittest.TestCase):
     def test_bad_data_handle_parsefood(self):
         result = parse_food_information("m;cvm;lal")
         self.assertIs(type(result), tuple)
-        
-    def test_get_ingredients(self):
-        response_jsoned = json.dumps(self.response_spoon)
-        
-        result = parse_food_information(response_jsoned)
-        
-        
-       
-        
         
     def test_get_recipe_title(self):
         result = parse_food_information(self.response_spoon)
@@ -502,6 +494,10 @@ class TestSpoonacularMethods(unittest.TestCase):
     def test_get_recipe_ingredients(self):
         result = parse_food_information(self.response_spoon)
         self.assertEqual(result[4][0], "heavy cream")
+    
+    def test_check_recipe_ingredients(self):
+      result = parse_food_information(self.response_spoon)
+      self.assertCountEqual(result[4], self.correct_ingredients)
     
 if __name__ == '__main__':
     unittest.main()

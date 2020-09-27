@@ -81,6 +81,9 @@ def parse_food_information(food_json):
         
     ingredients_list = []
     
+    if "extendedIngredients" not in data:
+        return ("No Recipe Data Found for this food :(", "", "", "")
+    
     for item in data["extendedIngredients"]:
         ingredients_list.append(item["name"])
     
