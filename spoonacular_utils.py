@@ -69,8 +69,13 @@ def parse_food_information(food_json):
     Returns:
     tuple: with indices to title, servinmgs, image, and prep time.
     """
+    
+    if food_json is None:
+        return ("No Recipe Data Found for this food :(", "", "", "")
+    
     try:
-        data = json.loads(food_json)
+        dataaa = json.dumps(food_json)
+        data = json.loads(dataaa)
     except ValueError:
         return ("No Recipe Data Found for this food :(", "", "", "")
         

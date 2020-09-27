@@ -78,19 +78,23 @@ app = flask.Flask(__name__)
 def index():
     random_foods = [
         "ras malai",
-        "jian bing",
+        "Cheeseburger",
         "chocolate cake",
         "aloo paratha",
         "vanilla ice cream",
         "tonkatsu",
-        "rarebit"
+        "Key Lime Pie"
         ]
     queried_food = random.choice(random_foods)
     
+    print("queried_food " + queried_food)
+    
     #Deactivated so I don't waste points
-    #recipe_id = search_recipe(spoonacular_api_key, queried_food)
-    #food_info_json = food_information(spoonacular_api_key, recipe_id)
-    #food_info = parse_food_information(food_info_json)
+    recipe_id = search_recipe(spoonacular_api_key, queried_food)
+    food_info_json = food_information(spoonacular_api_key, recipe_id)
+    food_info = parse_food_information(food_info_json)
+    
+    print(food_info)
     
     quote = get_food_quote(api, queried_food)
     return flask.render_template(
@@ -98,7 +102,11 @@ def index():
         content = quote[0],
         author = quote[1],
         at = quote[2],
-        queried_food=queried_food
+        queried_food=food_info[0],
+        servings=food_info[1],
+        recipe_image=food_info[2],
+        prep_time=food_info[3]
+        
     )
 
 if (__name__ == "__main__"):
