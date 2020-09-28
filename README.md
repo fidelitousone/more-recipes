@@ -45,6 +45,26 @@ get the length of the search object and handle a returned empty list.
 Finally the last implementation was just to use random.choice() which
 essentially avoids one-off errors altogether.
 
+### Working in the Quota Restraint of the Spoonacular API
+The Spoonacular API, with a free account hard enforces a limit of 150
+quests at most per day for particular recipes. Therefore, it is not a
+luxury that I could have kept refreshing the page repeatedly in order 
+to test results without being blocked or repeatedly making new accounts.
+In order to bypass this, I decided to unit test my code instead.
+By utilizing the unit test library, and using the mock library to simulate
+obtaining data from the API itself.
+
+### Working With and Properly Manipulating and Parsing JSON
+This should have been the easier part, but this didn't prove to be 
+the case. I quickly found out that my app was running into errors
+repeatedly due to JSON being returned incorrectly, or just formatted
+in completely wrong ways. When I was testing my code, the error I 
+encountered the most was that I was trying to access JSON but ended up
+accessing string array elements because the JSON wasn't returned correctly.
+Eventually, the solution, although, a hacky one was a suggestion from StackOverflow
+where I dumped the json and loaded it into a different variable to absolutely ensure
+that JSON data was being read and not a dict or a list.
+
 ## Known Issues
 ### Tweet Relevancy
 Not every tweet obtained is actually relevant to the actual food. Instead it
@@ -54,3 +74,11 @@ its just in their twitter handle. A solution, given more time, would be to
 generate a list of extremely specific search terms about the tweet. Additionally,
 another approach would be to implement some kind of machine learning to get
 a desired tweet.
+
+### Front End Design Flaws
+One of the most obvious flaws in the actual web page design is that it is not
+responsive. When changing screen sizes, it quickly breaks. Given more time, 
+I could have properly set up a better layout and a design that could
+accomdoate different screen sizes. For any recipe that may have more than
+20 ingredients for whatever reason runs into severe issues as the list runs
+off the div.
