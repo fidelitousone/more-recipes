@@ -66,7 +66,7 @@ def index():
         "ras malai",
         "Cheeseburger",
         "chocolate cake",
-        "aloo paratha",
+        "Grilled Cheese sandwich",
         "vanilla ice cream",
         "tonkatsu",
         "Key Lime Pie"
