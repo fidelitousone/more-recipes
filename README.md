@@ -40,8 +40,12 @@ export SPOONACULAR_API_KEY=''
 - Install Heroku `npm install -g heroku`
 - log in `heroku login -i`
 - create a new instance `heroku create`
+- do `heroku git:remote -a [heroku app name]`
 - push heroku to the repo `git push heroku master`
-- Navigate to website
+- Go to Heroku Dashboard for app
+- Navigate to Settings Tab
+- Click on reveal config vars
+- put in each corresponding API key from the .env file
 
 ## Technical Difficulties
 ### Obtaining Tweet Information
