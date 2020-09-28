@@ -18,9 +18,30 @@ A simple web app to retrieve recipes and quotes relating to them on Twitter.
 - Clone the repo: `git clone https://github.com/fidelitousone/project1-js843.git`
 - `cd` into app directory
 - Install dependencies: <code>pip install flask tweepy python-dotenv</code>
-- run `./install.sh`
+- create `.env` file
+- add secret keys by adding the following secret keys into `.env`
+```
+#Twitter API Key
+export CONSUMER_API_KEY=''
+#Twitter Key Secret
+export CONSUMER_SECRET_KEY=''
+#Twitter Token
+export APP_SECRET=''
+#Twitter Token Secret
+export APP_KEY=''
+#Spoonacular API Key
+export SPOONACULAR_API_KEY=''
+```
 - Enter corresponding keys
 - run `python main.py`
+- Preview Running Application
+- Ensure that Everything is rendered correctly, otherwise check API Keys!
+- Make Heroku Account
+- Install Heroku `npm install -g heroku`
+- log in `heroku login -i`
+- create a new instance `heroku create`
+- push heroku to the repo `git push heroku master`
+- Navigate to website
 
 ## Technical Difficulties
 ### Obtaining Tweet Information
