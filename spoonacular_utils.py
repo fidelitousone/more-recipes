@@ -2,6 +2,8 @@ import requests
 import json
 import random
 
+
+
 def search_recipe(spoonacular_api, query):
     """
     Request a search from spoonacular's API regarding a recipe
@@ -88,6 +90,11 @@ def parse_food_information(food_json):
     
     for item in data["extendedIngredients"]:
         ingredients_list.append(item["originalString"])
+        
+    try:
+        data["image"]
+    except KeyError:
+        data["image"] = "http://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder.gif"
     
     
     return (
