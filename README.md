@@ -1,4 +1,4 @@
-# project1-js843
+# More Recipes
 A simple web app to retrieve recipes and quotes relating to them on Twitter.
 
 ## Table of Contents
@@ -15,7 +15,7 @@ A simple web app to retrieve recipes and quotes relating to them on Twitter.
 * python-dotenv 0.14.0+
 
 ## Setup
-- Clone the repo: `git clone https://github.com/fidelitousone/project1-js843.git`
+- Clone the repo: `git clone https://github.com/fidelitousone/more-recipes.git`
 - `cd` into app directory
 - Install dependencies: <code>pip install flask tweepy python-dotenv</code>
 - create `.env` file
